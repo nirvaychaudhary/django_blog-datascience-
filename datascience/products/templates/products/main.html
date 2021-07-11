@@ -1,0 +1,55 @@
+{% extends 'ds_base.html' %}
+
+{% block title %} {% endblock title %}
+
+
+
+{% block content %} 
+<div>
+    <h2>{{title}}</h2>
+</div>
+<hr>
+{% if error_message %}
+    {{error_message}}
+{# {% else %} #}
+{#   <div> #}
+{#        {{ df|safe }} #}
+{#    </div> #}
+{% endif %}
+<hr>
+<hr>
+
+<div>
+    <form action="" method="POST" class="ui form">
+        {% csrf_token %}
+        <div class="field">
+            <label>Choose a chart type:</label>
+            <div class="ui selection dropdown">
+                <input type="hidden" name="sales">
+                <i class="dropdown icon"></i>
+                <div class="default text">--------------</div>
+                <div class="menu">
+                    <div class="item" value="bar">Bar Plot</div>
+                    <div class="item" value="line">Line Plot</div>
+                    <div class="item" value="count">Count Plot</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="two fields">
+              <div class="field">
+                <label>Date From:</label>
+                <input type="date" name="date_from">
+              </div>
+              <div class="field">
+                <label>Date To:</label>
+                <input type="date" name="date_to">
+              </div>
+            </div>
+        </div>
+        <button type="submit" class="ui primary button">Proceed</button>
+    </form>
+</div>
+
+{% endblock content %}
